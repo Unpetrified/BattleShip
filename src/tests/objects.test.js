@@ -1,4 +1,4 @@
-const Ship = require("../Game logic/objects");
+const {Ship, Gameboard, Player} = require("../Game logic/objects");
 // const Gameboard = require("../Game logic/objects");
 // const Player = require("../Game logic/objects");
 
@@ -29,4 +29,68 @@ describe("Ships should have a length, ability to take damage and get sunk when t
         ship.hit();
         expect(ship.sunk).toBeTruthy();
     });
+});
+
+describe("Add a ship at a given location, give it damage if hit and update the board when a player makes any attack", () => {
+    let gameboard;
+    beforeEach(() => {
+        gameboard = new Gameboard();
+    });
+
+    test("check that a ship can be placed vertically", () => {
+        let ship = new Ship(3);
+        let expectedBoard = [
+            //0,1,2,3,4,5,6,7,8,9
+             [0,0,0,0,0,0,0,0,0,0], //0
+             [0,0,0,0,0,0,0,0,0,0], //1
+             [0,0,0,0,0,0,0,0,0,0], //2
+             [0,0,0,0,0,0,0,0,0,0], //3
+             [0,0,0,0,0,0,0,0,0,0], //4
+             [0,ship,0,0,0,0,0,0,0,0], //5
+             [0,ship,0,0,0,0,0,0,0,0], //6
+             [0,ship,0,0,0,0,0,0,0,0], //7
+             [0,0,0,0,0,0,0,0,0,0], //8
+             [0,0,0,0,0,0,0,0,0,0], //9
+         ];
+        gameboard.placeShip(3,[1,5], "V");
+        expect(gameboard.board).toEqual(expectedBoard)
+    });
+
+    test("check that a ship can be placed horizontally", () => {
+        let ship = new Ship(3);
+        let expectedBoard = [
+            //0,1,2,3,4,5,6,7,8,9
+             [0,0,0,0,0,0,0,0,0,0], //0
+             [0,0,0,0,0,0,0,0,0,0], //1
+             [0,0,0,0,0,0,0,0,0,0], //2
+             [0,0,0,0,0,0,0,0,0,0], //3
+             [0,0,0,0,0,0,0,0,0,0], //4
+             [0,ship,ship,ship,0,0,0,0,0,0], //5
+             [0,0,0,0,0,0,0,0,0,0], //6
+             [0,0,0,0,0,0,0,0,0,0], //7
+             [0,0,0,0,0,0,0,0,0,0], //8
+             [0,0,0,0,0,0,0,0,0,0], //9
+         ];
+        gameboard.placeShip(3,[1,5], "H");
+        expect(gameboard.board).toEqual(expectedBoard)
+    });
+
+    test("check that a ship will not be placed when the location given is beyond the gameboard", () => {
+        let expectedBoard = [
+            //0,1,2,3,4,5,6,7,8,9
+             [0,0,0,0,0,0,0,0,0,0], //0
+             [0,0,0,0,0,0,0,0,0,0], //1
+             [0,0,0,0,0,0,0,0,0,0], //2
+             [0,0,0,0,0,0,0,0,0,0], //3
+             [0,0,0,0,0,0,0,0,0,0], //4
+             [0,0,0,0,0,0,0,0,0,0], //5
+             [0,0,0,0,0,0,0,0,0,0], //6
+             [0,0,0,0,0,0,0,0,0,0], //7
+             [0,0,0,0,0,0,0,0,0,0], //8
+             [0,0,0,0,0,0,0,0,0,0], //9
+         ];
+        gameboard.placeShip(3,[8,5], "H");
+        expect(gameboard.board).toEqual(expectedBoard)
+    });    
+
 })
