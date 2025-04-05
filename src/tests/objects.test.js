@@ -38,7 +38,7 @@ describe("Add a ship at a given location, give it damage if hit and update the b
     });
 
     test("check that a ship can be placed vertically", () => {
-        let ship = new Ship(3);
+        let ship = new Ship(4);
         let expectedBoard = [
             //0,1,2,3,4,5,6,7,8,9
              [0,0,0,0,0,0,0,0,0,0], //0
@@ -49,10 +49,10 @@ describe("Add a ship at a given location, give it damage if hit and update the b
              [0,ship,0,0,0,0,0,0,0,0], //5
              [0,ship,0,0,0,0,0,0,0,0], //6
              [0,ship,0,0,0,0,0,0,0,0], //7
-             [0,0,0,0,0,0,0,0,0,0], //8
+             [0,ship,0,0,0,0,0,0,0,0], //8
              [0,0,0,0,0,0,0,0,0,0], //9
          ];
-        gameboard.placeShip(3,[1,5], "V");
+        gameboard.placeShip(4,[1,5], "V");
         expect(gameboard.board).toEqual(expectedBoard)
     });
 
@@ -91,6 +91,69 @@ describe("Add a ship at a given location, give it damage if hit and update the b
          ];
         gameboard.placeShip(3,[8,5], "H");
         expect(gameboard.board).toEqual(expectedBoard)
-    });    
+    });  
+    
+    test("check that a ship can take damage if hit", () => {
+        let ship = new Ship(3);
+        ship.hit();
+        gameboard.placeShip(3, [1,5], "H");
+        gameboard.receiveAttack([2,5]);
+        let expectedBoard = [
+            //0,1,2,3,4,5,6,7,8,9
+             [0,0,0,0,0,0,0,0,0,0], //0
+             [0,0,0,0,0,0,0,0,0,0], //1
+             [0,0,0,0,0,0,0,0,0,0], //2
+             [0,0,0,0,0,0,0,0,0,0], //3
+             [0,0,0,0,0,0,0,0,0,0], //4
+             [0,ship,[ship],ship,0,0,0,0,0,0], //5
+             [0,0,0,0,0,0,0,0,0,0], //6
+             [0,0,0,0,0,0,0,0,0,0], //7
+             [0,0,0,0,0,0,0,0,0,0], //8
+             [0,0,0,0,0,0,0,0,0,0], //9
+        ];
+        expect(gameboard.board).toEqual(expectedBoard);
+    });
+
+    test("update the board for missed hits", () => {
+        let ship = new Ship(1);
+        gameboard.placeShip(1, [8,5], "H");
+        gameboard.receiveAttack([2,5]);
+        let expectedBoard = [
+            //0,1,2,3,4,5,6,7,8,9
+             [0,0,0,0,0,0,0,0,0,0], //0
+             [0,0,0,0,0,0,0,0,0,0], //1
+             [0,0,0,0,0,0,0,0,0,0], //2
+             [0,0,0,0,0,0,0,0,0,0], //3
+             [0,0,0,0,0,0,0,0,0,0], //4
+             [0,0,-1,0,0,0,0,0,ship,0], //5
+             [0,0,0,0,0,0,0,0,0,0], //6
+             [0,0,0,0,0,0,0,0,0,0], //7
+             [0,0,0,0,0,0,0,0,0,0], //8
+             [0,0,0,0,0,0,0,0,0,0], //9
+        ];
+        expect(gameboard.board).toEqual(expectedBoard);
+    });
+
+    test("ensure no location can be hit twice", () => {
+        let ship = new Ship(1);
+        gameboard.placeShip(1, [8,5], "H");
+        gameboard.receiveAttack([2,5]);
+        gameboard.receiveAttack([7,3]);
+        gameboard.receiveAttack([2,5]);
+        let expectedBoard = [
+            //0,1,2,3,4,5,6,7,8,9
+             [0,0,0,0,0,0,0,0,0,0], //0
+             [0,0,0,0,0,0,0,0,0,0], //1
+             [0,0,0,0,0,0,0,0,0,0], //2
+             [0,0,0,0,0,0,0,-1,0,0], //3
+             [0,0,0,0,0,0,0,0,0,0], //4
+             [0,0,-1,0,0,0,0,0,ship,0], //5
+             [0,0,0,0,0,0,0,0,0,0], //6
+             [0,0,0,0,0,0,0,0,0,0], //7
+             [0,0,0,0,0,0,0,0,0,0], //8
+             [0,0,0,0,0,0,0,0,0,0], //9
+        ];
+        expect(gameboard.board).toEqual(expectedBoard);
+    });
 
 })

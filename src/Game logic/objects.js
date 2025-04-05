@@ -60,6 +60,33 @@ class Gameboard {
         }
 
     }
+
+    // return -1 if the attack could not be carried out due to wrong coordinates
+    // or the location been hit already
+    // return 0 for a successful hit or miss
+    receiveAttack(coordinate) {
+        let x = coordinate[0],
+            y = coordinate[1],
+            location = this.board[y][x];
+        
+        // check that the coordinate is on the board
+        if (x >= this.board.length || y >= this.board.length ) return -1
+
+        // check if the location has been hit
+        if (location === -1 || Array.isArray(location)) return -1
+
+        // missed attack
+        if (location === 0) {
+            this.board[y][x] = -1;
+            return 0
+        }
+
+        // location is a reference to a ship
+        this.board[y][x] = [location];
+        location.hit(); // send damage to the ship
+
+        return 0
+    }
 }
 
 class Player {
@@ -68,7 +95,7 @@ class Player {
     }
 }
 
-let gameboard = new Gameboard();
-gameboard.placeShip(3,[1,5], "V");
+// let gameboard = new Gameboard();
+// gameboard.placeShip(3,[1,5], "V");
 
 module.exports = {Ship, Gameboard, Player}
