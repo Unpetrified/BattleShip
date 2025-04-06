@@ -91,11 +91,20 @@ class Gameboard {
 
 class Player {
     constructor(name) {
-
+        this.name = name;
+        this.gameboard = new Gameboard();
+        this.score = 0;
     }
-}
 
-// let gameboard = new Gameboard();
-// gameboard.placeShip(3,[1,5], "V");
+    updateScore() {
+        this.score++;
+    }
+
+    reset() {
+        this.gameboard = new Gameboard();
+        this.score = 0;
+    }
+
+}
 
 module.exports = {Ship, Gameboard, Player}

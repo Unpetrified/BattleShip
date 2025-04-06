@@ -3,9 +3,334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Battle Ship</title>
 </head>
 <body>
-    <h1>Webpack Template File</h1>
+    <section class="start-page">
+        <h2>Welcome to Battle Ship</h2>
+        <button class="open-how-to-play">How to Play</button>
+        <section class="how-to-play">
+            
+            <svg class="close-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>close</title><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>    
+
+            <div class="objective"> 
+                <header>Objective</header>
+                Sink all of your opponent's hidden ships before they sink yours
+            </div>
+
+            <div class="setup">
+                <header>Setup</header>
+                <ul>
+                    <li>Ships can be placed horizontally or vertically, but not diagonally.</li>
+                    <li>
+                        Each player places their 5 ships on their grid (hidden from the opponent):
+                        <ul>
+                            <li>Carrier (5 spaces)</li>
+                            <li>Battleship (4 spaces)</li>
+                            <li>Cruiser (3 spaces)</li>
+                            <li>Submarine (3 spaces)</li>
+                            <li>Destroyer (2 spaces)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="gameplay">
+                <header>Gameplay</header>
+                <ol>
+                    <li>Players take turns attacking a grid coordinate by clicking on it</li>
+                    <li>A Hit 🔥 or Miss 💧 is recorded depending on whether a ship was on the attacked spot</li>
+                    <li>When all spots of a ship has been hit, the ship sinks</li>
+                    <li>The first player to sink all 5 enemy ships wins!</li>
+                </ol>
+            </div>
+        </section>
+        <form>
+            <legend>Input your name to begin</legend>
+            <label for="name">Player One</label>
+            <input type="text" id="name" class="name"><input type="submit" class="start-btn" value="Start">
+        </form>
+    </section>
+
+    <section class="game">
+        <section class="player-one-board">
+        
+            <p class="section-heading">Player's Fleet</p>
+    
+            <div class="row" data-row="1">
+                <div class="col" data-col="1"></div>
+                <div class="col" data-col="2"></div>
+                <div class="col" data-col="3"></div>
+                <div class="col" data-col="4"></div>
+                <div class="col" data-col="5"></div>
+                <div class="col" data-col="6"></div>
+                <div class="col" data-col="7"></div>
+                <div class="col" data-col="8"></div>
+                <div class="col" data-col="9"></div>
+                <div class="col" data-col="10"></div>
+            </div>
+            <div class="row" data-row="2">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+            <div class="row" data-row="3">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+            <div class="row" data-row="4">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+            <div class="row" data-row="5">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+            <div class="row" data-row="6">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+            <div class="row" data-row="7">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+            <div class="row" data-row="8">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+            <div class="row" data-row="9">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+            <div class="row" data-row="10">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+    
+            <section class="player-one-ship-status">
+                <div class="carrier">Carrier <span class="status">Sunk</span></div>
+                <div class="battleship">Battleship <span class="status">Afloat</span></div>
+                <div class="cruiser">Cruiser <span class="status">Sunk</span></div>
+                <div class="submarine">Submarine <span class="status">Afloat</span></div>
+                <div class="destroyer">Destroyer <span class="status">Afloat</span></div>
+            </section>
+    
+        </section>
+    
+        <section class="score-board">
+            <header>Score</header>
+            <div class="score">
+                <span class="player-one-score">2</span> - <span class="player-two-score">0</span>
+            </div>
+            <button class="reset">Reset</button>
+        </section>
+    
+        <section class="player-two-board">
+            
+            <p class="section-heading">Player's Fleet</p>
+    
+            <div class="row" data-row="1">
+                <div class="col" data-col="1"></div>
+                <div class="col" data-col="2"></div>
+                <div class="col" data-col="3"></div>
+                <div class="col" data-col="4"></div>
+                <div class="col" data-col="5"></div>
+                <div class="col" data-col="6"></div>
+                <div class="col" data-col="7"></div>
+                <div class="col" data-col="8"></div>
+                <div class="col" data-col="9"></div>
+                <div class="col" data-col="10"></div>
+            </div>
+            <div class="row" data-row="2">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+            <div class="row" data-row="3">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+            <div class="row" data-row="4">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+            <div class="row" data-row="5">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+            <div class="row" data-row="6">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+            <div class="row" data-row="7">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+            <div class="row" data-row="8">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+            <div class="row" data-row="9">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+            <div class="row" data-row="10">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+    
+            <section class="player-two-ship-status">
+                <div class="carrier">Carrier <span class="status">Sunk</span></div>
+                <div class="battleship">Battleship <span class="status">Afloat</span></div>
+                <div class="cruiser">Cruiser <span class="status">Sunk</span></div>
+                <div class="submarine">Submarine <span class="status">Afloat</span></div>
+                <div class="destroyer">Destroyer <span class="status">Afloat</span></div>
+            </section>
+    
+        </section>
+    </section>
+
 </body>
 </html>
