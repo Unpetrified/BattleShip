@@ -1,6 +1,6 @@
 :root {
     --grid-border: rgba(0, 0, 0, 0.5);
-    --grid-size: 35px;
+    --grid-size: 38px;
     --primary-btn-color: rgb(0, 195, 255);
     --primary-header-color: rgb(255, 115, 0);
 }
@@ -77,9 +77,11 @@ legend {
 }
 
 .game {
-
-    
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: scroll;
+    gap: 15px;
 }
 
 .row {
@@ -98,5 +100,43 @@ legend {
     border: 1px solid var(--grid-border);
     width: var(--grid-size);
     height: var(--grid-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.player-one-ship-status,
+.player-two-ship-status {
+    display: flex;
+    gap: 4px;
+    font-size: 10px;
+}
+
+.afloat {
+    background-color: var(--primary-btn-color);
+    color: white;
+}
+
+.sunk {
+    background-color: var(--primary-header-color);
+    color: white;
+}
+
+.score-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.reset {
+    border: none;
+    background-color: var(--primary-header-color);
+    color: white;
+    font-weight: bolder;
+    padding: 5px 10px;
+}
+
+.reset:hover {
+    background-color: var(--primary-btn-color);
+}
