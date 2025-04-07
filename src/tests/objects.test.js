@@ -92,6 +92,26 @@ describe("Add a ship at a given location, give it damage if hit and update the b
         gameboard.placeShip(3,[8,5], "H");
         expect(gameboard.board).toEqual(expectedBoard)
     });  
+
+    test("check that a ship will not be placed if it intersects another ship", () => {
+        let ship = new Ship(3);
+        let expectedBoard = [
+            //0,1,2,3,4,5,6,7,8,9
+             [0,0,0,0,0,0,0,0,0,0], //0
+             [0,0,0,0,0,0,0,0,0,0], //1
+             [0,0,0,0,0,0,0,0,0,0], //2
+             [0,0,0,0,0,0,0,0,0,0], //3
+             [0,0,0,0,0,0,0,0,0,0], //4
+             [0,ship,ship,ship,0,0,0,0,0,0], //5
+             [0,0,0,0,0,0,0,0,0,0], //6
+             [0,0,0,0,0,0,0,0,0,0], //7
+             [0,0,0,0,0,0,0,0,0,0], //8
+             [0,0,0,0,0,0,0,0,0,0], //9
+         ];
+        gameboard.placeShip(3,[1,5], "H");
+        gameboard.placeShip(3,[1,4], "V");
+        expect(gameboard.board).toEqual(expectedBoard)
+    });  
     
     test("check that a ship can take damage if hit", () => {
         let ship = new Ship(3);

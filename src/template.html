@@ -54,7 +54,8 @@
         <form class="player-name-form">
             <legend>Input your name to begin</legend>
             <label for="name">Player One</label>
-            <input type="text" id="name" class="name"><input type="submit" class="start-btn" value="Start">
+            <input type="text" id="name" class="name" required>
+            <input type="submit" class="start-btn" value="Start">
         </form>
 
         <section class="placeships display-off">
@@ -186,35 +187,35 @@
                 </section>
                 <section class="ships">
                     <div class="ship-orientation">
-                        <img src="./assets/carrier.png" class="ship selected"> 
+                        <img src="./assets/carrier.png" class="ship" data-length="5"> 
                         <select name="orientation" class="orientation">
                             <option value="H">Horizontal</option>
                             <option value="V">Vertical</option>
                         </select>
                     </div>
                     <div class="ship-orientation">
-                        <img src="./assets/battleship.png" class="ship"> 
+                        <img src="./assets/battleship.png" class="ship" data-length="4"> 
                         <select name="orientation" class="orientation">
                             <option value="H">Horizontal</option>
                             <option value="V">Vertical</option>
                         </select>
                     </div>
                     <div class="ship-orientation">
-                        <img src="./assets/cruiser.png" class="ship"> 
+                        <img src="./assets/cruiser.png" class="ship" data-length="3"> 
                         <select name="orientation" class="orientation">
                             <option value="H">Horizontal</option>
                             <option value="V">Vertical</option>
                         </select>
                     </div>
                     <div class="ship-orientation">
-                        <img src="./assets/submarine.png" class="ship"> 
+                        <img src="./assets/submarine.png" class="ship" data-length="3"> 
                         <select name="orientation" class="orientation">
                             <option value="H">Horizontal</option>
                             <option value="V">Vertical</option>
                         </select>
                     </div>
                     <div class="ship-orientation">
-                        <img src="./assets/destroyer.png" class="ship"> 
+                        <img src="./assets/destroyer.png" class="ship" data-length="2"> 
                         <select name="orientation" class="orientation">
                             <option value="H">Horizontal</option>
                             <option value="V">Vertical</option>
@@ -223,14 +224,6 @@
                 </section>
             </section>
     
-            <!-- <section class="player-one-ship-status">
-                <div class="carrier">Carrier <span class="sunk">Sunk</span></div>
-                <div class="battleship">Battleship <span class="afloat">Afloat</span></div>
-                <div class="cruiser">Cruiser <span class="sunk">Sunk</span></div>
-                <div class="submarine">Submarine <span class="afloat">Afloat</span></div>
-                <div class="destroyer">Destroyer <span class="afloat">Afloat</span></div>
-            </section> -->
-
             <button class="start-game">Start</button>
     
         </section>

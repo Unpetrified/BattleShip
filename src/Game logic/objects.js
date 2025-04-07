@@ -46,7 +46,20 @@ class Gameboard {
     
         // check that ship can be placed from start position
         //  to the ships length in the given orientation
-        if (stop_position >= this.board[0].length) return
+        if (stop_position >= this.board[0].length) return -1
+
+        // check for ships along the specified path
+        let j = start
+        while (true) {
+            if (orientation === "H") {
+                if (this.board[y][j] !== 0) return -1
+            } else {
+                if (this.board[j][x] !== 0) return -1
+            }
+
+            if(j === stop_position) break
+            j++;
+        }
 
         let i = start;
 
@@ -58,6 +71,8 @@ class Gameboard {
             if (i === stop_position) break
             i++;
         }
+
+        return 0
 
     }
 

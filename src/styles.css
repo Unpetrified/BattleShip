@@ -148,9 +148,21 @@ legend {
     gap: 5px;
 }
 
+.ship-orientation:has(.selected) .orientation{
+    pointer-events: all;
+    opacity: 1;
+}
+
+.ship-orientation:has(.deactivate) .ship{
+    opacity: 0.3;
+    pointer-events: none;
+}
+
 .orientation {
     border: none;
     background-color: white;
+    pointer-events: none;
+    opacity: 0.5;
 }
 
 .ship {
@@ -235,4 +247,8 @@ legend {
 
 .display-off {
     display: none;
+}
+
+.black {
+    background-color: grey;
 }
