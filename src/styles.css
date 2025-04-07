@@ -58,7 +58,7 @@ body {
     position: fixed;
     top: 0;
     z-index: 1;
-    pointer-events: none;
+    pointer-events: auto;
 }
 
 .how-to-play,
@@ -74,10 +74,6 @@ body {
     border-radius: 20px;
     padding: 15px 20px;
     z-index: 2;
-}
-
-.how-to-play {
-    z-index: 3;
 }
 
 .close-btn {
