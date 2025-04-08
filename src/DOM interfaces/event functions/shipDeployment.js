@@ -28,7 +28,7 @@ function getSelectedShip() {
     return ship_returned
 }
 
-function getCellCoordinate(e) {
+export function getCellCoordinate(e) {
     let row = Number.parseInt(e.currentTarget.parentNode.getAttribute("data-row"))-1,
         col = Number.parseInt(e.currentTarget.getAttribute("data-col"))-1;
     return [col, row]

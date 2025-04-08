@@ -5,6 +5,7 @@ import { howToPlayOpen, howToPlayClose } from "./event functions/howToPlay";
 import { randomDeploy } from "./event functions/randomShipDeployment";
 import { deploy, selectShip } from "./event functions/shipDeployment";
 import { startGame } from "./event functions/startGame";
+import { attack } from "./event functions/attack";
 
 let player = new Player(""),
     computer = new Player("Computer");
@@ -38,3 +39,8 @@ const reset = document.querySelector(".reset");
 reset.addEventListener("click",e => {
     location.reload();
 })
+
+const player_cells = document.querySelectorAll(".player-two-board .col");
+player_cells.forEach(cell => {
+    cell.addEventListener("click", (e) => attack(e, computer, "player-two-board"));
+});
