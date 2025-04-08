@@ -6,7 +6,8 @@ import { randomDeploy } from "./event functions/randomShipDeployment";
 import { deploy, selectShip } from "./event functions/shipDeployment";
 import { startGame } from "./event functions/startGame";
 
-let player = new Player("");
+let player = new Player(""),
+    computer = new Player("Computer");
 
 const how_to_play_open_btn = document.querySelector(".open-how-to-play");
 how_to_play_open_btn.addEventListener("click", howToPlayOpen);
@@ -28,7 +29,12 @@ cells.forEach(cell => {
 });
 
 const start_btn = document.querySelector(".start-game");
-start_btn.addEventListener("click", startGame);
+start_btn.addEventListener("click", () => startGame(player, computer));
 
 const random_btn = document.querySelector(".random-btn");
-random_btn.addEventListener("click", () => randomDeploy(player));
+random_btn.addEventListener("click", () => randomDeploy(player, "board"));
+
+const reset = document.querySelector(".reset");
+reset.addEventListener("click",e => {
+    location.reload();
+})

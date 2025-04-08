@@ -1,8 +1,8 @@
 import { visualize } from "../deploymentVisualization";
 
-export function randomDeploy(player) {
+export function randomDeploy(player, board) {
 
-    clearUiBoard();
+    clearUiBoard(board);
     clearBoard(player);
 
     let ships = [
@@ -51,8 +51,8 @@ function getCoordinate() {
 }
 
 // clear ui cells 
-function clearUiBoard() {
-    const ui_cells = document.querySelectorAll(".board .col");
+function clearUiBoard(board) {
+    const ui_cells = document.querySelectorAll(`.${board} .col`);
     ui_cells.forEach(cell => {
         cell.classList.remove("black");
     })
