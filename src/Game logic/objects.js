@@ -1,6 +1,7 @@
 class Ship {
-    constructor(length) {
+    constructor(length, name="ship") {
         this.length = length;
+        this.name = name;
         this.hit_taken = 0;
         this.sunk = false;
     }
@@ -31,16 +32,23 @@ class Gameboard {
             [0,0,0,0,0,0,0,0,0,0], //9
         ]
     }
-
-    placeShip(ship_length, start_position,orientation) {
+    // start position is provided as [col, row]
+    /**
+     * Takes given parameters, creates a ship and deploys it on the board using the orientation and position given.
+     * @param {"Ship Length"} ship_length
+     * @param {"Ship name"} name
+     * @param {"[col,row]"} start_position
+     * @param {'"H" for Horizontal, "V" for Vertical'} orientation
+     */
+    placeShip(ship_length, name, start_position,orientation) {
         
-        let ship = new Ship(ship_length);
+        let ship = new Ship(ship_length, name);
 
-        let x = start_position[0],
-            y = start_position[1],
-            start = x;
+        let row = start_position[0],
+            col = start_position[1],
+            start = row;
 
-        if (orientation === "V") start = y
+        if (orientation === "V") start = col
 
         let stop_position = start + ship_length-1;
     
@@ -52,9 +60,9 @@ class Gameboard {
         let j = start
         while (true) {
             if (orientation === "H") {
-                if (this.board[y][j] !== 0) return -1
+                if (this.board[col][j] !== 0) return -1
             } else {
-                if (this.board[j][x] !== 0) return -1
+                if (this.board[j][row] !== 0) return -1
             }
 
             if(j === stop_position) break
@@ -62,11 +70,11 @@ class Gameboard {
         }
 
         let i = start;
-
+        
         // place ship from the given coordinate
         while (true) {
-            if (orientation === "H") this.board[y][i] = ship;
-            else this.board[i][x] = ship
+            if (orientation === "H") this.board[col][i] = ship;
+            else this.board[i][row] = ship
             
             if (i === stop_position) break
             i++;
