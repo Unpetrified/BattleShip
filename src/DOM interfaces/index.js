@@ -1,7 +1,8 @@
-import { Player } from "../Game logic/objects";
 import "../styles.css";
+import { Player } from "../Game logic/objects";
 import formSubmit from "./event functions/formSubmit";
 import { howToPlayOpen, howToPlayClose } from "./event functions/howToPlay";
+import { randomDeploy } from "./event functions/randomShipDeployment";
 import { deploy, selectShip } from "./event functions/shipDeployment";
 import { startGame } from "./event functions/startGame";
 
@@ -29,3 +30,5 @@ cells.forEach(cell => {
 const start_btn = document.querySelector(".start-game");
 start_btn.addEventListener("click", startGame);
 
+const random_btn = document.querySelector(".random-btn");
+random_btn.addEventListener("click", () => randomDeploy(player));

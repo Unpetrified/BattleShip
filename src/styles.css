@@ -26,6 +26,7 @@ body {
 
 .open-how-to-play,
 .start-btn,
+.random-btn,
 .reset,
 .start-game {
     border: none;
@@ -174,8 +175,24 @@ legend {
     border-color: black;
 }
 
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
 .start-game {
     padding: 10px 50px;
+}
+
+.random-btn {
+    background-color: var(--primary-header-color);
+}
+
+.random-btn:hover {
+    background-color: var(--primary-btn-color);
 }
 
 .game {
