@@ -12,10 +12,10 @@ export function deploy(e, player) {
     
     let success = gameboard.placeShip(ship_length, start_position, orientation);
     
-    visualize(gameboard);
-
     if (success === -1) return
     
+    visualize(gameboard, "board");
+
     ship_to_deploy.classList.remove("selected");
     ship_to_deploy.classList.add("deactivate");
 }

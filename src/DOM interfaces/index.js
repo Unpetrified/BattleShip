@@ -16,9 +16,6 @@ how_to_play_close_btn.addEventListener("click", howToPlayClose);
 const form = document.querySelector(".player-name-form");
 form.addEventListener("submit", (e) => formSubmit(e, player));
 
-const start_btn = document.querySelector(".start-game");
-start_btn.addEventListener("click", () => startGame(player));
-
 let ships = document.querySelectorAll(".ship");
 ships.forEach(ship => {
     ship.addEventListener("click", selectShip)
@@ -27,4 +24,8 @@ ships.forEach(ship => {
 const cells = document.querySelectorAll(".board .col");
 cells.forEach(cell => {
     cell.addEventListener("click", (e) => deploy(e, player));
-})
+});
+
+const start_btn = document.querySelector(".start-game");
+start_btn.addEventListener("click", startGame);
+
