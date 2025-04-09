@@ -6,7 +6,7 @@ import { Gameboard } from "../Game logic/objects";
  * @param {"board, one or two"} pos 
  * @param {"false by default"} hidden 
  */
-export function visualize(gameboard, pos, hidden=false) {
+export function visualize(gameboard, pos, hidden=false, clear=false) {
     let row = 0,
         col = 0;
     
@@ -22,6 +22,12 @@ export function visualize(gameboard, pos, hidden=false) {
         
         let cell = gameboard.board[row][col],
             ui_cell = document.querySelector(`.${pos} .row[data-row="${row+1}"] .col[data-col="${col+1}"]`);
+
+        // reset ui_cell
+        if (clear) {
+            ui_cell.textContent = "";
+            ui_cell.classList.remove("black");
+        }
 
         if (cell !== 0 && cell !== -1 && !hidden) ui_cell.classList.add("black"); // show ship at location 
         if (cell === -1 ) ui_cell.textContent = "💧"; // show missed hits

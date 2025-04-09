@@ -13,7 +13,7 @@ let player = new Player(""),
 const how_to_play_open_btn = document.querySelector(".open-how-to-play");
 how_to_play_open_btn.addEventListener("click", howToPlayOpen);
 
-const how_to_play_close_btn = document.querySelector(".close-btn");
+const how_to_play_close_btn = document.querySelector(".how-to-play .close-btn");
 how_to_play_close_btn.addEventListener("click", howToPlayClose);
 
 const form = document.querySelector(".player-name-form");

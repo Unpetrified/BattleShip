@@ -1,8 +1,7 @@
 import { visualize } from "../deploymentVisualization";
-import { updatePlayerUiScore, updateShipUiStatus } from "../playerBoardUpdate";
-import { openBD } from "./backDrop";
+import { updateShipUiStatus } from "../playerBoardUpdate";
+import { gameOver } from "./gameOver";
 import { getCellCoordinate } from "./shipDeployment";
-import { initializeComputer } from "./startGame";
 
 export function attack(e, computer, ui, player) {
     let cell_coordinate = getCellCoordinate(e),
@@ -14,7 +13,7 @@ export function attack(e, computer, ui, player) {
             
             if (status["isSunk"]) {
                 updateShipUiStatus(status, ui)
-                gameOver(computer, player);
+                gameOver(player, computer);
             }
         }
 
@@ -30,46 +29,4 @@ function checkSunk(player, coordinate) {
         ship_hit = player.gameboard.board[row][col][0];
 
     return {"ship":ship_hit.name, "isSunk":ship_hit.isSunk()}
-}
-
-function gameOver(computer, player) {
-    if (computer.gameboard.shipSunk()) {
-        computer.updateScore();
-        updatePlayerUiScore(computer, "one");
-        startNewRound(computer, player);
-    }
-}
-
-function startNewRound(computer, player) {
-    /**
-     * clear player one and two ui and class board
-     * open pop up for ship placement module
-     * clear deployment board
-     * remove deactivate from all ships
-     */
-    
-    // reset player one and two class board
-    player.gameboard.resetBoard(); 
-    computer.gameboard.resetBoard(); 
-
-    // reset player one and two ui board
-    visualize(player.gameboard, "one");
-    visualize(computer.gameboard, "two");
-    console.log("Reset")
-    return
-    // pop up ship placement module
-    const start_page = document.querySelector(".start-page");
-    start_page.classList.remove("display-off");
-    openBD();
-
-    //reset deployment board
-    visualize(player.gameboard, "board");
-
-    //remove deactivate from all ships
-    let ships = document.querySelectorAll(".ship");
-    ships.forEach(ship => {
-        ship.classList.remove("deactivate");
-        ship.classList.remove("selected");
-    });
-
 }

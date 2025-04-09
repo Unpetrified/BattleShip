@@ -112,7 +112,7 @@ class Gameboard {
         return 1
     }
 
-    shipSunk() {
+    allShipsSunk() {
         this.sunk_ships++;
         return (this.sunk_ships === 5) ? true : false
     }
@@ -130,7 +130,8 @@ class Gameboard {
              [0,0,0,0,0,0,0,0,0,0], //7
              [0,0,0,0,0,0,0,0,0,0], //8
              [0,0,0,0,0,0,0,0,0,0], //9
-         ]
+        ];
+        this.sunk_ships = 0;
     }
 }
 

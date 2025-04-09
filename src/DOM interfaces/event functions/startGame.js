@@ -1,5 +1,6 @@
 import { updatePlayer } from "../playerBoardUpdate";
 import { closeBD } from "./backDrop";
+import { enableBoards } from "./gameOver";
 import { randomDeploy } from "./randomShipDeployment";
 
 export function startGame(playerOne, computer) {
@@ -17,11 +18,13 @@ export function startGame(playerOne, computer) {
     updatePlayer(playerOne, "one", false);
     initializeComputer(computer);
     updatePlayer(computer, "two", false);
+
+    enableBoards();
 }
 
 function checkDeploymentStatus() {
     const ships = document.querySelectorAll(".ship");
-    const deployed_ships = document.querySelectorAll(".deactivate");
+    const deployed_ships = document.querySelectorAll(".ships .deactivate");
     return ships.length === deployed_ships.length
 }
 

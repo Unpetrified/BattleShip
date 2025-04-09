@@ -38,8 +38,8 @@ export function randomDeploy(player, board, hidden) {
 }
 
 function getRandomOrientation() {
-    let i = Math.random()*100;
-    return (i>50) ? "H" : "V"
+    let i = Math.floor(Math.random()*10) % 2;
+    return (i===0) ? "H" : "V"
 }
 
 // generate a two item array containing numbers b/w 0-9
