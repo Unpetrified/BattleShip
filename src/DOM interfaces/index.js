@@ -42,5 +42,5 @@ reset.addEventListener("click",e => {
 
 const player_cells = document.querySelectorAll(".player-two-board .col");
 player_cells.forEach(cell => {
-    cell.addEventListener("click", (e) => attack(e, computer, "player-two-board"));
+    cell.addEventListener("click", (e) => attack(e, computer, "two", player));
 });

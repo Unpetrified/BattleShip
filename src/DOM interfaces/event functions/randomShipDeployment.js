@@ -1,16 +1,16 @@
 import { visualize } from "../deploymentVisualization";
 
-export function randomDeploy(player, board) {
+export function randomDeploy(player, board, hidden) {
 
     clearUiBoard(board);
     clearBoard(player);
 
     let ships = [
-        {"length" : 5, "name" : "Carrier"},
-        {"length" : 4, "name" : "Battleship"},
-        {"length" : 3, "name" : "Cruiser"},
-        {"length" : 3, "name" : "Submarine"},
-        {"length" : 2, "name" : "Destroyer"},
+        {"length" : 5, "name" : "carrier"},
+        {"length" : 4, "name" : "battleship"},
+        {"length" : 3, "name" : "cruiser"},
+        {"length" : 3, "name" : "submarine"},
+        {"length" : 2, "name" : "destroyer"},
     ]
 
     let ships_deployed = 0,
@@ -26,7 +26,7 @@ export function randomDeploy(player, board) {
         if (success === 0) {
             ships_deployed++;
             ships.shift();
-            visualize(gameboard, "board");
+            visualize(gameboard, "board", hidden);
         }
     }
 

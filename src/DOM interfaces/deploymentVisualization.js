@@ -1,6 +1,17 @@
-export function visualize(gameboard, pos, hidden) {
+import { Gameboard } from "../Game logic/objects";
+
+/**
+ * 
+ * @param {Gameboard} gameboard 
+ * @param {"board, one or two"} pos 
+ * @param {"false by default"} hidden 
+ */
+export function visualize(gameboard, pos, hidden=false) {
     let row = 0,
         col = 0;
+    
+    if (pos !== "board") pos = `player-${pos}-board`;
+
 
     // loop through player board
     // add grey for deployed ship at location
@@ -23,4 +34,3 @@ export function visualize(gameboard, pos, hidden) {
         }
     }
 }
-// rewrite

@@ -14,9 +14,9 @@ export function startGame(playerOne, computer) {
     const game = document.querySelector(".game");
     game.classList.remove("display-off");
 
-    updatePlayer(playerOne, "player-one-board", false, "player-one-score");
+    updatePlayer(playerOne, "one", false);
     initializeComputer(computer);
-    updatePlayer(computer, "player-two-board", true, "player-two-score");
+    updatePlayer(computer, "two", false);
 }
 
 function checkDeploymentStatus() {
@@ -25,6 +25,6 @@ function checkDeploymentStatus() {
     return ships.length === deployed_ships.length
 }
 
-function initializeComputer(computer) {
-    randomDeploy(computer, "player-two-board");
+export function initializeComputer(computer) {
+    randomDeploy(computer, "two", true);
 }

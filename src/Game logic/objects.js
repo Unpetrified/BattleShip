@@ -12,7 +12,7 @@ class Ship {
     }
 
     isSunk() {
-        if (this.hit_taken >= this.length) this.sunk = true;
+        return (this.hit_taken >= this.length) ? this.sunk = true : this.sunk = false
     }
 }
 
@@ -30,7 +30,8 @@ class Gameboard {
             [0,0,0,0,0,0,0,0,0,0], //7
             [0,0,0,0,0,0,0,0,0,0], //8
             [0,0,0,0,0,0,0,0,0,0], //9
-        ]
+        ];
+        this.sunk_ships = 0;
     }
     // start position is provided as [col, row]
     /**
@@ -86,7 +87,7 @@ class Gameboard {
 
     // return -1 if the attack could not be carried out due to wrong coordinates
     // or the location been hit already
-    // return 0 for a successful hit or miss
+    // return 0 for a miss and 1 for successful hit
     receiveAttack(coordinate) {
         let x = coordinate[0],
             y = coordinate[1],
@@ -108,7 +109,12 @@ class Gameboard {
         this.board[y][x] = [location];
         location.hit(); // send damage to the ship
 
-        return 0
+        return 1
+    }
+
+    shipSunk() {
+        this.sunk_ships++;
+        return (this.sunk_ships === 5) ? true : false
     }
 
     resetBoard() {
