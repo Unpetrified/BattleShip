@@ -19,7 +19,7 @@ export function randomDeploy(player, board, hidden) {
     while (ships_deployed < 5) {
         let length = ships[0]["length"],
             name = ships[0]["name"],
-            start_position = getCoordinate(),
+            start_position = getRandomCoordinate(),
             orientation = getRandomOrientation(),
             success = gameboard.placeShip(length, name, start_position, orientation);
     
@@ -43,7 +43,7 @@ function getRandomOrientation() {
 }
 
 // generate a two item array containing numbers b/w 0-9
-function getCoordinate() {
+export function getRandomCoordinate() {
     let row = Math.floor(Math.random() * 10),
         col = Math.floor(Math.random() * 10);
     let coor = [col, row];

@@ -44,3 +44,5 @@ const player_cells = document.querySelectorAll(".player-two-board .col");
 player_cells.forEach(cell => {
     cell.addEventListener("click", (e) => attack(e, computer, "two", player));
 });
+
+document.querySelector(".com").addEventListener("click", () => attack("", player, "one", computer));
