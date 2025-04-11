@@ -17,7 +17,7 @@ export function startGame(playerOne, computer) {
 
     updatePlayer(playerOne, "one", false);
     initializeComputer(computer);
-    updatePlayer(computer, "two", false);
+    updatePlayer(computer, "two", true);
 
     enableBoards();
 }

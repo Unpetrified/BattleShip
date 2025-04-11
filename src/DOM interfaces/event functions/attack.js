@@ -41,7 +41,11 @@ export function attack(e, player_to_attack, ui, player_attacking) {
         let isHidden = false
         if (player_to_attack.name === "Computer") isHidden = true
         visualize(player_to_attack.gameboard, ui, isHidden);
+        
+        if(ui === "one") return
+        attack("", player_attacking, "one", player_to_attack);
     }
+    
 }
 
 function checkSunk(player, coordinate) {
